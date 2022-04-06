@@ -1,4 +1,6 @@
+#!/usr/bin/php 
 <?php
+/* does not work with png image containing alpha channel */
 if ( $argc < 3 ) {
     echo "Usage. php encode filename text\n";
 }
@@ -9,11 +11,11 @@ $img = imagecreatefrompng( $filename ); // imagecreatefromjpeg does not work
 
 for ( $y=0; $y < $h; $y++ ) {
     for ( $x = 0; $x < $w; $x++ ) {
-        $bitpos = ($y*$w + $x) % 8;
         $chrpos = intval(($y*$w+$x)/8);
         if ( $chrpos >= sizeof( $txtArray ) ) {
             break 2;
         }
+        $bitpos = ($y*$w + $x) % 8;
         $rgb = imagecolorat($img, $x , $y );
         $r = ($rgb >> 16) & 0xFF;
         $g = ($rgb >> 8) & 0xFF;
