@@ -1,10 +1,8 @@
 # Steganography
 
 usage encode: 
-$ php encode [image.png] [text without space"
+$ php encode infile.png "text to encode"
 
 usage decode:
-$ php decode image.png
-
-
+$ php decode imagefile.png
 
